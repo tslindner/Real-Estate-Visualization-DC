@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request, Response
 
+import json
 import pandas as pd
 import pymongo
 
@@ -33,6 +34,11 @@ def home():
     data = list(collection.find())
     
     return render_template("index.html", data=data)
+
+# @app.route("/json-delivery", methods = ['GET'])
+# def delivery():
+#     data = list(collection.find())
+#     return data
     
 
     
