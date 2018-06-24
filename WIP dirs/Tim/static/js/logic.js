@@ -19,8 +19,12 @@
 //   }
 
 
+// Mac users, use this api call:
+// d3.json('http://127.0.0.1:5000/resource', function(error, response) {
 
+// PC users, use this api call:
 d3.json('http://localhost:5000/resource', function(error, response) {
+  
   if (error) return console.warn(error);
 
   var jsonResponse = (response)
