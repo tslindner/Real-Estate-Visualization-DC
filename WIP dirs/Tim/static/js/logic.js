@@ -20,31 +20,29 @@
 
 
 
+d3.json('http://localhost:5000/resource', function(error, response) {
+  if (error) return console.warn(error);
+
+  var jsonResponse = (response)
+
+  console.log(jsonResponse);
+
+  var address = jsonResponse[0]["ADDRESS"]
+
+    
+// This lists each letter down the side of the page, vertically.
+  d3.select("#test").selectAll("div")
+    .data(jsonResponse)
+    .enter()
+    .append("div")
+    .html(function(d) {
+      return `<p> ${d["ADDRESS"]} </p>`;
+    });
 
 
-
-d3.json('http://localhost:5000/resource', function(real_estate_data) {
-  console.log(real_estate_data);
-  var data = real_estate_data;
-  console.log(data)
 });
 
-
-
-
-d3.select("#test").selectAll("div")
-  .data(data)
-  .enter()
-  .append("div")
-  .classed("col-md-4", true)
-  .html(function(d) {
-    return `<p> ${d.ADDRESS}</p>`;
-  });
-
-
-
-
-
+  // .classed("col-md-4", true)
 
 
 
