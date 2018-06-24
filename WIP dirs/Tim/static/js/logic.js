@@ -30,7 +30,7 @@ d3.json('http://localhost:5000/resource', function(error, response) {
   var address = jsonResponse[0]["ADDRESS"]
 
     
-// This lists each letter down the side of the page, vertically.
+// This lists each address down the side of the page, vertically.
   d3.select("#test").selectAll("div")
     .data(jsonResponse)
     .enter()

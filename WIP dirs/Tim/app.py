@@ -18,6 +18,12 @@ app = Flask(__name__)
 api = Api(app)
 
 
+@app.route("/")
+def home():
+        
+    return render_template("index.html")
+
+
 @app.route("/data")
 def scraper():
 
@@ -28,22 +34,13 @@ def scraper():
     real_estate_list = real_estate_list.rename(index=str, columns={"$/SQUARE FEET": "SQUARE FEET 2", "URL (SEE http://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING)": "URL"})
     real_estate_list = real_estate_list.to_dict(orient="records")
 
-    for doc in real_estate_list:
-        collection.insert_one(doc)
-    
-    # collection.insert_many(real_estate_list) This might work fine actually
+    collection.insert_many(real_estate_list)
 
     return redirect("..")
-
-@app.route("/")
-def home():
-        
-    return render_template("index.html")
 
 
 class input_data(Resource):
     def get(self):
-
 
         items = collection.find()
 
@@ -51,10 +48,8 @@ class input_data(Resource):
 
         return json.loads(dumps(items))
 
-
         # return [json.loads(json.dumps(item, indent=4, default=json_util.default))
         #         for item in items]
-
 
 api.add_resource(input_data, '/resource')
 
