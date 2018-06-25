@@ -10,50 +10,32 @@ d3.json('http://localhost:5000/resource', function(error, response) {
   console.log(response);
 
 
-  // List creation
-  d3.select(".list-group").selectAll("li")
-    .data(response)
-    .enter()
-    .append("li")
-    .classed("list-group-item row", true)
-    .html(function(d) {
-      return `
-      <a class="col-md-1 scroll-list scroll-list-left" href=${d["URL"]}> comp </a>
-      <a class="col-md-3 scroll-list" href=${d["URL"]}> ${d["ADDRESS"]} </a>
-      <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["LOCATION"]} </a> 
-      <a class="col-md-2 scroll-list" href=${d["URL"]}> $${d["PRICE"]} </a>
-      <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BEDS"]} </a>
-      <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BATHS"]} </a>
-      <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["SQUARE FEET"]} Sq. Ft. </a>`;
-    });
+// Creates scrolling list NOW WITH BUTTONS!
+    var scrollListRow = d3.select(".list-group").selectAll("li")
+                            .data(response)
+                            .enter()
+                            .append("li")
+                            .classed("list-group-item row", true);
 
+    scrollListRow.append("label")
+                    .classed("col-md-1 scroll-list scroll-list-left", true)
+                    .attr('for',function(d){ return "a"; })
+                    .append("input")
+                    .attr("unchecked", true)
+                    .attr("type", "checkbox")
+                    .attr("id", "c")
+                    .on("click", function(d) {  return console.log(d["ADDRESS"]); });
 
-  // // TODO: Make the buttons work
-  //   d3.select(".list-group").selectAll("li")
-  //   .data(response)
-  //   .enter()
-  //   .append("li")
-  //   .classed("list-group-item row", true)
-  //   .append('label')
-  //   .classed("col-md-1 scroll-list scroll-list-left", true)
-  //   .attr('for',function(d){ return "a"; })
-  //   .text(function(d) { return ""; })
-  //   .append("input")
-  //   .attr("unchecked", true)
-  //   .attr("type", "checkbox")
-  //   .attr("id", function(d) { return "c"; })
-  //   .attr("onClick", "console.log('Hello!')")
-  //   .append("span")
-  //   .html(function(d) {
-  //     return `
-  //     <a class="col-md-1 scroll-list scroll-list-left" href=${d["URL"]}> comp </a>
-  //     <a class="col-md-3 scroll-list" href=${d["URL"]}> ${d["ADDRESS"]} </a>
-  //     <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["LOCATION"]} </a> 
-  //     <a class="col-md-2 scroll-list" href=${d["URL"]}> $${d["PRICE"]} </a>
-  //     <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BEDS"]} </a>
-  //     <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BATHS"]} </a>
-  //     <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["SQUARE FEET"]} Sq. Ft. </a>`
-  //   })
+    scrollListRow.append("span")
+                  .html(function(d) {
+                    return `
+                    <a class="col-md-3 scroll-list" href=${d["URL"]}> ${d["ADDRESS"]} </a>
+                    <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["LOCATION"]} </a> 
+                    <a class="col-md-2 scroll-list" href=${d["URL"]}> $${d["PRICE"]} </a>
+                    <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BEDS"]} </a>
+                    <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BATHS"]} </a>
+                    <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["SQUARE FEET"]} Sq. Ft. </a>`
+                  });
 
 
 });

@@ -29,10 +29,7 @@ a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 200px;
-    padding-left:6px;
-    padding-right:6px;
-    padding-top:6px;
-    padding-bottom:6px;
+    padding:6px;
     display: block;
     height: 100%;
     text-decoration: none;
@@ -50,6 +47,11 @@ a:hover {
 
 .scroll-list-left {
     padding-left: 20px;
+}
+
+.bedBath {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 #result_panel {

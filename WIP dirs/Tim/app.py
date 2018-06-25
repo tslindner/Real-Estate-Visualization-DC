@@ -30,7 +30,7 @@ def scraper():
     collection.drop()
 
     real_estate_list = pd.read_csv("input_data/real_estate.csv")
-    real_estate_list.fillna(value="null", inplace=True)
+    real_estate_list.fillna(value="N/A", inplace=True)
     real_estate_list = real_estate_list.rename(index=str, columns={"$/SQUARE FEET": "SQUARE FEET 2", "URL (SEE http://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING)": "URL"})
     real_estate_list = real_estate_list.to_dict(orient="records")
 
