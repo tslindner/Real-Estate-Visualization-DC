@@ -1,47 +1,59 @@
 
-
-// // Create a map object
-// var myMap = L.map("map", {
-//     center: [37.09, -95.71],
-//     zoom: 5
-//   });
-  
-//   // Add a tile layer
-//   L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
-//     "access_token=pk.eyJ1IjoidHNsaW5kbmVyIiwiYSI6ImNqaWNhdTFzdzFuam4za21sc3ZiMmN5bDEifQ.5Il8Y1QtwyMFWCa1JkDY_Q"
-//   ).addTo(myMap);
-
-//   for (var i = 0; i < cities.length; i++) {
-//     var city = cities[i];
-//     L.marker(city.location)
-//       .bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
-//       .addTo(myMap);
-//   }
-
-
-// Mac users, use this api call:
+// MAC USERS, USE THIS API CALL:
 // d3.json('http://127.0.0.1:5000/resource', function(error, response) {
 
-// PC users, use this api call:
+// PC USERS, USE THIS API CALL:
 d3.json('http://localhost:5000/resource', function(error, response) {
-  
+
   if (error) return console.warn(error);
 
-  var jsonResponse = (response)
+  console.log(response);
 
-  console.log(jsonResponse);
 
-  var address = jsonResponse[0]["ADDRESS"]
-
-    
-// This lists each address down the side of the page, vertically.
-  d3.select("#test").selectAll("div")
-    .data(jsonResponse)
+  // List creation
+  d3.select(".list-group").selectAll("li")
+    .data(response)
     .enter()
-    .append("div")
+    .append("li")
+    .classed("list-group-item row", true)
     .html(function(d) {
-      return `<p> ${d["ADDRESS"]} </p>`;
+      return `
+      <a class="col-md-1 scroll-list scroll-list-left" href=${d["URL"]}> comp </a>
+      <a class="col-md-3 scroll-list" href=${d["URL"]}> ${d["ADDRESS"]} </a>
+      <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["LOCATION"]} </a> 
+      <a class="col-md-2 scroll-list" href=${d["URL"]}> $${d["PRICE"]} </a>
+      <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BEDS"]} </a>
+      <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BATHS"]} </a>
+      <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["SQUARE FEET"]} Sq. Ft. </a>`;
     });
+
+
+  // // TODO: Make the buttons work
+  //   d3.select(".list-group").selectAll("li")
+  //   .data(response)
+  //   .enter()
+  //   .append("li")
+  //   .classed("list-group-item row", true)
+  //   .append('label')
+  //   .classed("col-md-1 scroll-list scroll-list-left", true)
+  //   .attr('for',function(d){ return "a"; })
+  //   .text(function(d) { return ""; })
+  //   .append("input")
+  //   .attr("unchecked", true)
+  //   .attr("type", "checkbox")
+  //   .attr("id", function(d) { return "c"; })
+  //   .attr("onClick", "console.log('Hello!')")
+  //   .append("span")
+  //   .html(function(d) {
+  //     return `
+  //     <a class="col-md-1 scroll-list scroll-list-left" href=${d["URL"]}> comp </a>
+  //     <a class="col-md-3 scroll-list" href=${d["URL"]}> ${d["ADDRESS"]} </a>
+  //     <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["LOCATION"]} </a> 
+  //     <a class="col-md-2 scroll-list" href=${d["URL"]}> $${d["PRICE"]} </a>
+  //     <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BEDS"]} </a>
+  //     <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BATHS"]} </a>
+  //     <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["SQUARE FEET"]} Sq. Ft. </a>`
+  //   })
 
 
 });
