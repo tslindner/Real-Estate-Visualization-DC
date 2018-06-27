@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -16,15 +16,21 @@
 <body>
     <div id="map">
         test
+        <select id="selDataset" onchange="getData(this.value)">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
 
-
-    </div>
-
-    <div id="test">
+        <!-- some on click thing
+        onclick="fbLikeDump();WriteCookie(); -->
         
+
+
     </div>
 
-    <div class="panel panel-primary col-md-5" id="result_panel">
+
+    <div class="panel panel-primary list-area" id="result_panel">
         <div class="panel-heading"><h3 class="panel-title">Result List</h3>
         </div>
         <div class="panel-body">

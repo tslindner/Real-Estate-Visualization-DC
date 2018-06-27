@@ -1,4 +1,4 @@
-a:hover {
+a:hover { 
     text-decoration: none;
     color: black;
 }
@@ -54,6 +54,11 @@ a:hover {
     padding-right: 0px;
 }
 
+.panel-primary {
+    width: 500px;
+}
+
 #result_panel {
     padding: 0px;
 }
+

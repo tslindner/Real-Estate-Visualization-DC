@@ -1,9 +1,9 @@
-
+ 
 // MAC USERS, USE THIS API CALL:
 // d3.json('http://127.0.0.1:5000/resource', function(error, response) {
 
 // PC USERS, USE THIS API CALL:
-d3.json('http://localhost:5000/resource', function(error, response) {
+d3.json('/resource', function(error, response) {
 
   if (error) return console.warn(error);
 
@@ -24,21 +24,32 @@ d3.json('http://localhost:5000/resource', function(error, response) {
                     .attr("unchecked", true)
                     .attr("type", "checkbox")
                     .attr("id", "c")
-                    .on("click", function(d) {  return console.log(d["ADDRESS"]); });
+                    .on("click", function(d) {  return console.log(d["address"]); });
 
     scrollListRow.append("span")
                   .html(function(d) {
                     return `
-                    <a class="col-md-3 scroll-list" href=${d["URL"]}> ${d["ADDRESS"]} </a>
-                    <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["LOCATION"]} </a> 
-                    <a class="col-md-2 scroll-list" href=${d["URL"]}> $${d["PRICE"]} </a>
-                    <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BEDS"]} </a>
-                    <a class="col-md-1 scroll-list" href=${d["URL"]}> ${d["BATHS"]} </a>
-                    <a class="col-md-2 scroll-list" href=${d["URL"]}> ${d["SQUARE FEET"]} Sq. Ft. </a>`
+                    <a class="col-md-3 scroll-list" href="/zoom?id=${d["id"]}"> ${d["address"]} </a>
+                    <a class="col-md-2 scroll-list" href="/zoom?id=${d["id"]}"> ${d["location"]} </a> 
+                    <a class="col-md-2 scroll-list" href="/zoom?id=${d["id"]}"> $${d["price"]} </a>
+                    <a class="col-md-1 scroll-list" href="/zoom?id=${d["id"]}"> ${d["beds"]} </a>
+                    <a class="col-md-1 scroll-list" href="/zoom?id=${d["id"]}"> ${d["baths"]} </a>
+                    <a class="col-md-2 scroll-list" href="/zoom?id=${d["id"]}"> ${d["sq_ft"]} Sq. Ft. </a>`
                   });
 
 
+
+
 });
+
+function getData(numBeds) {
+  console.log(numBeds);
+  d3.json(`/zoom?high_beds=${numBeds}&low_beds=${numBeds}`, function(error, data) {
+      console.log("newdata", data);
+  });
+};
+
+
 
   // .classed("col-md-4", true)
 
