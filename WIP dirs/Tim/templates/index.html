@@ -123,31 +123,11 @@
         
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     <div id="main">
-        <div id="range">
-            <select id="selDataset" onchange="getData(this.value)">
-                <option value="reset">reset</option>
-                <option value="-1">clear</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-
-            <!-- some on click thing
-            onclick="fbLikeDump();WriteCookie(); -->
-
-
-
-        </div>
-
-
         <div class="panel panel-primary list-area" id="result_panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <button onclick="openNav()" id="showFiltersButton" class="btn">Show filters</button>
                     <button onclick="closeNav()" id="hideFiltersButton" class="btn">Hide filters</button>
-
                 </h3>
             </div>
             <div class="panel-body">
@@ -168,6 +148,7 @@
             </div>
         </div>
     </div>
+    <button type="button" onclick="clearFilters()" class="btn-info" id="resetFiltersButton"><h2 class="bigNavButtons">Remove all filters from result list</h2></button>
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="{{ url_for('static', filename='js/lib/nouislider.min.js') }}"></script>

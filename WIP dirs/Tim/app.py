@@ -263,7 +263,7 @@ def zoom():
         query_result = query_result.filter(Listing.lot_size>=low_lot_size)
 
     if high_year_built:
-        if high_year_built != "0.00":
+        if high_year_built != "1900":
             query_result = query_result.filter(Listing.year_built<=high_year_built)
 
     if low_year_built:

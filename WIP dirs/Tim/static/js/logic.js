@@ -56,10 +56,9 @@ high_beds=${filterURLData.bed[1]}\
 &high_year=${filterURLData.year[1]}\
 &low_year=${filterURLData.year[0]}\
 &high_moneySqft=${filterURLData.moneySqft[1]}\
-&low_moneySqft=${filterURLData.moneySqft[0]}\
-&high_hoa=${filterURLData.hoa[1]}\
-&low_hoa=${filterURLData.hoa[0]}\
-`)};
+&low_moneySqft=${filterURLData.moneySqft[0]}`)};
+// &high_hoa=${filterURLData.hoa[1]}\
+// &low_hoa=${filterURLData.hoa[0]}\`)};
   // d3.json(`/zoom?high_beds=${numBeds}&low_beds=${numBeds}`, function(error, data) {
   //     console.log("newdata", data);
   // });
@@ -280,7 +279,7 @@ function priceToDoubleEvent() {
   document.getElementById("priceToSingle").style.display = "inline-block";
   document.getElementById("priceToDouble").style.display = "none";
   priceSlider.noUiSlider.destroy();
-  createDoubleFilter(bathSlider, 0, 10000000, 0, 10000000);
+  createDoubleFilter(priceSlider, 0, 10000000, 0, 10000000);
 }
 
 function sqftToSingleEvent() {
