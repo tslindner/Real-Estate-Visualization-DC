@@ -10,8 +10,17 @@ a:hover {
     -webkit-overflow-scrolling: touch;
 }
 
+.list-group-header {
+    max-height: 500px;
+    margin-bottom: 10px;
+    overflow:hidden;
+    list-style-type: none;
+    padding-left: 6px;
+}
+
 .list-group-item {
     padding: 0px;
+    /* height: 28.8px; */
 }
 
 .panel-body {

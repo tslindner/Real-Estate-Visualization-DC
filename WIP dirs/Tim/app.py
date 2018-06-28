@@ -177,7 +177,7 @@ def data():
 
 @app.route("/zoom", methods=["GET", "POST"])
 def zoom():
-    latitude = request.args.get("lat")
+    latitude = request.args.get("lat") 
     longitude = request.args.get("lon")
     ident = request.args.get("id")
     high_beds = request.args.get("high_beds")
