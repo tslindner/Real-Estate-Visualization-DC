@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
-    
+    <script src="../static/js/config.js"></script>
     
     <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
@@ -151,8 +151,10 @@
     </div>
 <div id="map"></div>
 <!-- Replace the value of the key parameter with your own API key. -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo6gDPSuQeLQcoEGrQniNBWhyUgXPZuWQ&callback=initMap" async defer></script>
-   
+<script src="./config.js"></script>
+<script type="text/javascript">
+// create the script tag and add to the DOM
+</script>   
     <button type="button" onclick="clearFilters()" class="btn-info" id="resetFiltersButton"><h2 class="bigNavButtons">Remove all filters from result list</h2></button>
     
 
