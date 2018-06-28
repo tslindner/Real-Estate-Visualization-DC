@@ -4,7 +4,7 @@ a:hover {
 }
 
 .list-group {
-    max-height: 500px;
+    height: 80vh;
     margin-bottom: 10px;
     overflow:scroll;
     -webkit-overflow-scrolling: touch;
@@ -63,27 +63,143 @@ a:hover {
     padding-right: 0px;
 }
 
+.mySliderContainer {
+    height: 10vh;
+    padding: 0px;
+}
+
+.mySliderClass {
+    height: 5vh;
+}
+
+.noUi-horizontal {
+    height: 2vh;
+    width: 20vw;
+}
+
+.input-number {
+	padding: 7px;
+	margin: 15px 5px 5px;
+    width: 8vw;
+    height: 3vh;
+}
+
 .panel-primary {
     width: 500px;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: rgb(6, 193, 250);
+    color: black;
+}
+
+.bigNavButtons {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#resetButton {
+    border-radius: 10px;
+    height: 10vh;
+    width: 30vw;
+    margin-bottom: 5px;
+}
+
+#filterButton {
+    border-radius: 10px;
+    height: 10vh;
+    width: 30vw;
+
+}
+
+#showFiltersButton {
+    border-radius: 10px;
+    display: block;
+}
+
+#hideFiltersButton {
+    border-radius: 10px;
+    display: none;
+}
+
+#bedToSingle{
+    display: null;
+}
+
+#bathToSingle{
+    display: null;
+}
+
+#priceToSingle{
+    display: null;
+}
+
+#sqftToSingle{
+    display: null;
+}
+
+#yearToSingle{
+    display: null;
+}
+
+#moneySqftToSingle{
+    display: null;
+}
+
+#hoaToSingle{
+    display: null;
+}
+
+#bedToDouble{
+    display: none;
+}
+
+#bathToDouble{
+    display: none;
+}
+
+#priceToDouble{
+    display: none;
+}
+
+#sqftToDouble{
+    display: none;
+}
+
+#yearToDouble{
+    display: none;
+}
+
+#moneySqftToDouble{
+    display: none;
+}
+
+#hoaToDouble{
+    display: none;
 }
 
 #result_panel {
     padding: 0px;
 }
 
+#mySidenav {
+    /* padding-top: 30px; */
+}
+
 /* COPIED FROM W3SCHOOLS */
 
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
+    width: 100%; /* 100% Full-height */
+    height: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    background-color: rgb(231, 237, 245); /* Black*/
+    overflow: hidden; /* Disable scroll */
+    padding-left: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -113,12 +229,20 @@ a:hover {
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-    transition: margin-left .5s;
-    padding: 20px;
+    transition: margin-top .5s;
+    padding: 0px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+
+/* NoUi */
+.noUi-connect {
+    color: rgb(6, 193, 250);
+	background: rgb(6, 193, 250);
+    
 }

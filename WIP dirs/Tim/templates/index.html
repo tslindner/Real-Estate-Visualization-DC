@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/nouislider.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
     
@@ -19,88 +19,153 @@
 
 <body>
 
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav container">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <div id="bedSlider"></div> <button type="button" id="bedToSingle">Single</button> <button type="button" id="bedToDouble">Double</button>
-        <div id="bathSlider"></div> <button type="button" id="bathToSingle">Single</button> <button type="button" id="bathToDouble">Double</button>
-        <div id="priceSlider"></div> <button type="button" id="priceToSingle">Single</button> <button type="button" id="priceToDouble">Double</button>
-        <div id="sqftSlider"></div> <button type="button" id="sqftToSingle">Single</button> <button type="button" id="sqftToDouble">Double</button>
-        <div id="yearSlider"></div> <button type="button" id="yearToSingle">Single</button> <button type="button" id="yearToDouble">Double</button>
-        <div id="moneySqftSlider"></div> <button type="button" id="moneySqftToSingle">Single</button> <button type="button" id="moneySqftToDouble">Double</button>
-        <div id="hoaSlider"></div> <button type="button" id="hoaToSingle">Single</button> <button type="button" id="hoaToDouble">Double</button>
+        <div class="row" style="height:30px;"></div>
+        
+        <div class="row">
+            <div class="col-md-1">
+                Beds:
+            </div>
+            <div class="mySliderContainer col-md-3">
+                <div id="bedSlider"></div> 
+                <button type="button" id="bedToSingle" onclick="bedToSingleEvent()">Single</button> 
+                <button type="button" id="bedToDouble" onclick="bedToDoubleEvent()">Double</button>
+                <input type="number" id="bedLowInput" class="input-number">
+                <input type="number" id="bedHighInput" class="input-number">
+            </div>
 
+            <div class="col-md-1">
+                Baths:
+            </div>
+            <div class="mySliderContainer col-md-3">
+                <div id="bathSlider" class="mySliderClass"></div> 
+                <button type="button" id="bathToSingle" onclick="bathToSingleEvent()">Single</button> 
+                <button type="button" id="bathToDouble" onclick="bathToDoubleEvent()">Double</button>
+                <input type="number" id="bathLowInput" class="input-number">
+                <input type="number" id="bathHighInput" class="input-number">
+            </div>
 
-
-
-    
-        <div>
-            <button type="button" id="resetButton">click here to reset!</button>
+            <div class="col-md-1">
+                    Price:
+                </div>
+            <div class="mySliderContainer col-md-3">
+                <div id="priceSlider" class="mySliderClass"></div> 
+                <button type="button" id="priceToSingle" onclick="priceToSingleEvent()">Single</button> 
+                <button type="button" id="priceToDouble" onclick="priceToDoubleEvent()">Double</button>
+                <input type="number" id="priceLowInput" class="input-number">
+                <input type="number" id="priceHighInput" class="input-number">
+            </div>
         </div>
-    
-        <div>
-            <button type="button" id="filterButton">click here to filter!</button>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <button type="button" id="resetButton" class="btn-primary"><h1 class="bigNavButtons">Reset filters</h1></button>
+                </div>
+            </div>
+            <div class="col-md-1">
+                Sq. Ft.:
+            </div>
+            <div class="mySliderContainer col-md-3">
+                <div id="sqftSlider" class="mySliderClass"></div> 
+                <button type="button" id="sqftToSingle" onclick="sqftToSingleEvent()">Single</button> 
+                <button type="button" id="sqftToDouble" onclick="sqftToDoubleEvent()">Double</button>
+                <input type="number" id="sqftLowInput" class="input-number">
+                <input type="number" id="sqftHighInput" class="input-number">
+            </div>
+        
+            <div class="col-md-1">
+                Year Built:
+            </div>
+            <div class="mySliderContainer col-md-3">
+                <div id="yearSlider" class="mySliderClass"></div> 
+                <button type="button" id="yearToSingle" onclick="yearToSingleEvent()">Single</button> 
+                <button type="button" id="yearToDouble" onclick="yearToDoubleEvent()">Double</button>
+                <input type="number" id="yearLowInput" class="input-number">
+                <input type="number" id="yearHighInput" class="input-number">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <button type="button" id="filterButton" class="btn-primary"><h1 class="bigNavButtons">Apply filters</h1></button>
+                </div>
+            </div>
+            <div class="col-md-1">
+                $/Sq. Ft.:
+            </div>
+            <div class="mySliderContainer col-md-3">
+                <div id="moneySqftSlider" class="mySliderClass"></div> 
+                <button type="button" id="moneySqftToSingle" onclick="moneySqftToSingleEvent()">Single</button> 
+                <button type="button" id="moneySqftToDouble" onclick="moneySqftToDoubleEvent()">Double</button>
+                <input type="number" id="moneySqftLowInput" class="input-number">
+                <input type="number" id="moneySqftHighInput" class="input-number">
+            </div>
+
+            <div class="col-md-1">
+                HOA per month:
+            </div>
+            <div class="mySliderContainer col-md-3">
+                <div id="hoaSlider" class="mySliderClass"></div> 
+                <button type="button" id="hoaToSingle" onclick="hoaToSingleEvent()">Single</button> 
+                <button type="button" id="hoaToDouble" onclick="hoaToDoubleEvent()">Double</button>
+                <input type="number" id="hoaLowInput" class="input-number">
+                <input type="number" id="hoaHighInput" class="input-number">
+            </div>
         </div>
     </div>
         
         <!-- Use any element to open the sidenav -->
-    <span onclick="openNav()">open</span>
+    
         
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     <div id="main">
+        <div id="range">
+            <select id="selDataset" onchange="getData(this.value)">
+                <option value="reset">reset</option>
+                <option value="-1">clear</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
 
-    </div>
-    <br>
-    <br>
-
-    <br>
-
-    <br>
-
-
-
-
-    <div id="range">
-        test <br>
-
-
-
-        <select id="selDataset" onchange="getData(this.value)">
-            <option value="reset">reset</option>
-            <option value="-1">clear</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-
-        <!-- some on click thing
-        onclick="fbLikeDump();WriteCookie(); -->
+            <!-- some on click thing
+            onclick="fbLikeDump();WriteCookie(); -->
 
 
 
-    </div>
-
-
-    <div class="panel panel-primary list-area" id="result_panel">
-        <div class="panel-heading"><h3 class="panel-title">Result List</h3>
         </div>
-        <div class="panel-body">
-            <ul class="list-group-header">
-                <li>
-                    <span class="col-md-1 scroll-list-header scroll-list-left"> </span>
-                    <span class="col-md-3 scroll-list-header"><strong>Address</strong></span>
-                    <span class="col-md-2 scroll-list-header"><strong>Location</strong></span> 
-                    <span class="col-md-2 scroll-list-header"><strong>Price</strong></span>
-                    <span class="col-md-1 scroll-list-header"><strong>Beds</strong></span>
-                    <span class="col-md-1 scroll-list-header"><strong>Baths</strong></span>
-                    <span class="col-md-2 scroll-list-header"><strong>Square feet</strong></span>
-                </li>
-            </ul>
-            <ul class="list-group">
 
-            </ul>
+
+        <div class="panel panel-primary list-area" id="result_panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <button onclick="openNav()" id="showFiltersButton" class="btn">Show filters</button>
+                    <button onclick="closeNav()" id="hideFiltersButton" class="btn">Hide filters</button>
+
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group-header">
+                    <li>
+                        <span class="col-md-1 scroll-list-header scroll-list-left"> </span>
+                        <span class="col-md-3 scroll-list-header"><strong>Address</strong></span>
+                        <span class="col-md-2 scroll-list-header"><strong>Location</strong></span> 
+                        <span class="col-md-2 scroll-list-header"><strong>Price</strong></span>
+                        <span class="col-md-1 scroll-list-header"><strong>Beds</strong></span>
+                        <span class="col-md-1 scroll-list-header"><strong>Baths</strong></span>
+                        <span class="col-md-2 scroll-list-header"><strong>Square feet</strong></span>
+                    </li>
+                </ul>
+                <ul class="list-group">
+
+                </ul>
+            </div>
         </div>
     </div>
 

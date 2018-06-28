@@ -213,7 +213,8 @@ def zoom():
         query_result = query_result.filter_by(id=ident)
 
     if high_beds:
-        query_result = query_result.filter(Listing.beds<=high_beds)
+        if high_beds != "0.00":
+            query_result = query_result.filter(Listing.beds<=high_beds)
 
     if low_beds:
         query_result = query_result.filter(Listing.beds>=low_beds)
@@ -234,43 +235,50 @@ def zoom():
         query_result = query_result.filter_by(city=city)
 
     if high_price:
-        query_result = query_result.filter(Listing.price<=high_price)
+        if high_price != "0.00":
+            query_result = query_result.filter(Listing.price<=high_price)
 
     if low_price:
         query_result = query_result.filter(Listing.price>=low_price)
 
     if high_baths:
-        query_result = query_result.filter(Listing.baths<=high_baths)
+        if high_baths != "0.00":
+            query_result = query_result.filter(Listing.baths<=high_baths)
 
     if low_baths:
         query_result = query_result.filter(Listing.baths>=low_baths)
 
     if high_sqft:
-        query_result = query_result.filter(Listing.sq_ft<=high_sqft)
+        if high_sqft != "0.00":
+            query_result = query_result.filter(Listing.sq_ft<=high_sqft)
 
     if low_sqft:
         query_result = query_result.filter(Listing.sq_ft>=low_sqft)
 
     if high_lot_size:
-        query_result = query_result.filter(Listing.lot_size<=high_lot_size)
+        if high_lot_size != "0.00":
+            query_result = query_result.filter(Listing.lot_size<=high_lot_size)
 
     if low_lot_size:
         query_result = query_result.filter(Listing.lot_size>=low_lot_size)
 
     if high_year_built:
-        query_result = query_result.filter(Listing.year_built<=high_year_built)
+        if high_year_built != "0.00":
+            query_result = query_result.filter(Listing.year_built<=high_year_built)
 
     if low_year_built:
         query_result = query_result.filter(Listing.year_built>=low_year_built)
 
     if high_money_per_sqft:
-        query_result = query_result.filter(Listing.money_per_sq_ft<=high_money_per_sqft)
+        if high_money_per_sqft != "0.00":
+            query_result = query_result.filter(Listing.money_per_sq_ft<=high_money_per_sqft)
 
     if low_money_per_sqft:
         query_result = query_result.filter(Listing.money_per_sq_ft>=low_money_per_sqft)
 
     if high_hoa:
-        query_result = query_result.filter(Listing.hoa_per_month<=high_hoa)
+        if high_hoa != "0.00":
+            query_result = query_result.filter(Listing.hoa_per_month<=high_hoa)
 
     if low_hoa:
         query_result = query_result.filter(Listing.hoa_per_month>=low_hoa)

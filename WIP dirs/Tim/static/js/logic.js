@@ -77,18 +77,25 @@ document.body.onload = function() {
 
 
 
-/* Set the width of the side navigation to 250px */
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
-  document.getElementById("mySidenav").style.width = "500px";
+  document.getElementById("mySidenav").style.height = "40vh";
+  document.getElementById("main").style.marginTop = "40vh";
+  var navElement = document.getElementsByClassName("list-group");
+  navElement[0].style.height = "40vh";
+  document.getElementById("showFiltersButton").style.display = "none";
+  document.getElementById("hideFiltersButton").style.display = "block";
 }
 
-/* Set the width of the side navigation to 0 */
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidenav").style.height = "0";
+  document.getElementById("main").style.marginTop = "0";
+  var navElement = document.getElementsByClassName("list-group");
+  navElement[0].style.height = "80vh";
+  document.getElementById("showFiltersButton").style.display = "block";
+  document.getElementById("hideFiltersButton").style.display = "none";
 }
-
-
-
 
 
 
@@ -103,13 +110,29 @@ var moneySqftSlider = document.getElementById("moneySqftSlider");
 var hoaSlider = document.getElementById("hoaSlider");
 
 
-createDoubleFilter(bedSlider,0, 10, 0, 10)
-createDoubleFilter(bathSlider, 0, 10, 0, 10)
-createDoubleFilter(priceSlider, 0, 10000000, 0, 10000000)
-createDoubleFilter(sqftSlider, 0, 3000, 0, 3000)
-createDoubleFilter(yearSlider, 1900, 2018, 1900, 2018)
-createDoubleFilter(moneySqftSlider, 0, 1000, 0, 1000)
-createDoubleFilter(hoaSlider, 0, 1000, 0, 1000)
+initFilters(bedSlider,0, 10, -99999999999999999, 99999999999999999)
+initFilters(bathSlider, 0, 10, -99999999999999999, 99999999999999999)
+initFilters(priceSlider, 0, 10000000, -99999999999999999, 99999999999999999)
+initFilters(sqftSlider, 0, 3000, -99999999999999999, 99999999999999999)
+initFilters(yearSlider, 1900, 2018, -99999999999999999, 99999999999999999)
+initFilters(moneySqftSlider, 0, 1000, -99999999999999999, 99999999999999999)
+initFilters(hoaSlider, 0, 1000, -99999999999999999, 99999999999999999)
+
+function initFilters(fieldSlider, low, high, min, max) {
+  noUiSlider.create(fieldSlider, {
+    animate: true,
+    animationDuration: 300,
+    start: [low, high],
+    step: 1,
+    connect: true,
+    // tooltips: [ wNumb({ decimals: 0 }), wNumb({ decimals: 0 }) ],
+    range: {
+      'min': min,
+      'max': max
+    }
+});
+};
+
 
 
 function createDoubleFilter(fieldSlider, low, high, min, max) {
@@ -119,27 +142,42 @@ function createDoubleFilter(fieldSlider, low, high, min, max) {
     start: [low, high],
     step: 1,
     connect: true,
-    tooltips: [ wNumb({ decimals: 0 }), wNumb({ decimals: 0 }) ],
+    // tooltips: [ wNumb({ decimals: 0 }), wNumb({ decimals: 0 }) ],
     range: {
       'min': min,
       'max': max
     }
   });
+  bedInputConnection()
+  bathInputConnection()
+  priceInputConnection()
+  sqftInputConnection()
+  yearInputConnection()
+  moneySqftInputConnection()
+  hoaInputConnection()
 };
 
 function createSingleFilter(fieldSlider, start, min, max) {
-noUiSlider.create(fieldSlider, {
-  animate: true,
-  animationDuration: 300,
-  start: [ start ],
-  step: 1,
-  connect: [ true, false],
-  tooltips: [ wNumb({ decimals: 0 }) ],
-  range: {
-    'min': min,
-    'max': max
-  }
-});
+  noUiSlider.create(fieldSlider, {
+    animate: true,
+    animationDuration: 300,
+    start: [ start ],
+    step: 1,
+    connect: [ true, false],
+    // tooltips: [ wNumb({ decimals: 0 }) ],
+    range: {
+      'min': min,
+      'max': max
+    }
+  });
+  bedInputConnection()
+  bathInputConnection()
+  priceInputConnection()
+  sqftInputConnection()
+  yearInputConnection()
+  moneySqftInputConnection()
+  hoaInputConnection()
+
 };
 
 document.getElementById("resetButton").addEventListener('click', function(){
@@ -195,87 +233,285 @@ document.getElementById("filterButton").addEventListener('click', function(){
 
 
 
-
-
-
-document.getElementById("bedToSingle").addEventListener("click", function(){
+function bedToSingleEvent() {
+  document.getElementById("bedToSingle").style.display = "none";
+  document.getElementById("bedToDouble").style.display = "inline-block";
   bedSlider.noUiSlider.destroy();
   createSingleFilter(bedSlider, 0, 0, 10);
-});
+}
 
-document.getElementById("bedToDouble").addEventListener("click", function(){
+function bedToDoubleEvent() {
+  document.getElementById("bedToSingle").style.display = "inline-block";
+  document.getElementById("bedToDouble").style.display = "none";
   bedSlider.noUiSlider.destroy();
   createDoubleFilter(bedSlider, 0, 10, 0, 10);
-});
+}
 
-
-document.getElementById("bathToSingle").addEventListener("click", function(){
+function bathToSingleEvent() {
+  document.getElementById("bathToSingle").style.display = "none";
+  document.getElementById("bathToDouble").style.display = "inline-block";
   bathSlider.noUiSlider.destroy();
   createSingleFilter(bathSlider, 0, 0, 10);
-});
+}
 
-document.getElementById("bathToDouble").addEventListener("click", function(){
+function bathToDoubleEvent() {
+  document.getElementById("bathToSingle").style.display = "inline-block";
+  document.getElementById("bathToDouble").style.display = "none";
   bathSlider.noUiSlider.destroy();
   createDoubleFilter(bathSlider, 0, 10, 0, 10);
-});
+}
 
-
-document.getElementById("priceToSingle").addEventListener("click", function(){
+function priceToSingleEvent() {
+  document.getElementById("priceToSingle").style.display = "none";
+  document.getElementById("priceToDouble").style.display = "inline-block";
   priceSlider.noUiSlider.destroy();
   createSingleFilter(priceSlider, 0, 0, 10000000);
-});
+}
 
-document.getElementById("priceToDouble").addEventListener("click", function(){
+function priceToDoubleEvent() {
+  document.getElementById("priceToSingle").style.display = "inline-block";
+  document.getElementById("priceToDouble").style.display = "none";
   priceSlider.noUiSlider.destroy();
-  createDoubleFilter(priceSlider, 0, 10000000, 0, 10000000);
-});
+  createDoubleFilter(bathSlider, 0, 10000000, 0, 10000000);
+}
 
-
-document.getElementById("sqftToSingle").addEventListener("click", function(){
+function sqftToSingleEvent() {
+  document.getElementById("sqftToSingle").style.display = "none";
+  document.getElementById("sqftToDouble").style.display = "inline-block";
   sqftSlider.noUiSlider.destroy();
   createSingleFilter(sqftSlider, 0, 0, 3000);
-});
+}
 
-document.getElementById("sqftToDouble").addEventListener("click", function(){
+function sqftToDoubleEvent() {
+  document.getElementById("sqftToSingle").style.display = "inline-block";
+  document.getElementById("sqftToDouble").style.display = "none";
   sqftSlider.noUiSlider.destroy();
   createDoubleFilter(sqftSlider, 0, 3000, 0, 3000);
-});
+}
 
-
-document.getElementById("yearToSingle").addEventListener("click", function(){
+function yearToSingleEvent() {
+  document.getElementById("yearToSingle").style.display = "none";
+  document.getElementById("yearToDouble").style.display = "inline-block";
   yearSlider.noUiSlider.destroy();
   createSingleFilter(yearSlider, 0, 1900, 2018);
-});
+}
 
-document.getElementById("yearToDouble").addEventListener("click", function(){
+function yearToDoubleEvent() {
+  document.getElementById("yearToSingle").style.display = "inline-block";
+  document.getElementById("yearToDouble").style.display = "none";
   yearSlider.noUiSlider.destroy();
   createDoubleFilter(yearSlider, 1900, 2018, 1900, 2018);
-});
+}
 
-
-document.getElementById("moneySqftToSingle").addEventListener("click", function(){
+function moneySqftToSingleEvent() {
+  document.getElementById("moneySqftToSingle").style.display = "none";
+  document.getElementById("moneySqftToDouble").style.display = "inline-block";
   moneySqftSlider.noUiSlider.destroy();
   createSingleFilter(moneySqftSlider, 0, 0, 1000);
-});
+}
 
-document.getElementById("moneySqftToDouble").addEventListener("click", function(){
+function moneySqftToDoubleEvent() {
+  document.getElementById("moneySqftToSingle").style.display = "inline-block";
+  document.getElementById("moneySqftToDouble").style.display = "none";
   moneySqftSlider.noUiSlider.destroy();
   createDoubleFilter(moneySqftSlider, 0, 1000, 0, 1000);
-});
+}
 
-
-document.getElementById("hoaToSingle").addEventListener("click", function(){
+function hoaToSingleEvent() {
+  document.getElementById("hoaToSingle").style.display = "none";
+  document.getElementById("hoaToDouble").style.display = "inline-block";
   hoaSlider.noUiSlider.destroy();
   createSingleFilter(hoaSlider, 0, 0, 1000);
-});
+}
 
-document.getElementById("hoaToDouble").addEventListener("click", function(){
+function hoaToDoubleEvent() {
+  document.getElementById("hoaToSingle").style.display = "inline-block";
+  document.getElementById("hoaToDouble").style.display = "none";
   hoaSlider.noUiSlider.destroy();
   createDoubleFilter(hoaSlider, 0, 1000, 0, 1000);
-});
+}
 
 
 
+bedInputConnection()
+bathInputConnection()
+priceInputConnection()
+sqftInputConnection()
+yearInputConnection()
+moneySqftInputConnection()
+hoaInputConnection()
+
+
+
+
+
+function bedInputConnection() {
+  var bedLowInput = document.getElementById("bedLowInput");
+  var bedHighInput = document.getElementById("bedHighInput");
+
+  bedSlider.noUiSlider.on('update', function( values, handle ) {
+
+    var value = values[handle];
+
+    if ( handle ) {
+      bedHighInput.value = value;
+    } else {
+      bedLowInput.value = Math.round(value);
+    }
+  });
+
+  bedLowInput.addEventListener('change', function(){
+    bedSlider.noUiSlider.set([this.value, null]);
+  });
+
+  bedHighInput.addEventListener('change', function(){
+    bedSlider.noUiSlider.set([null, Math.round(this.value)]);
+  });
+};
+
+function bathInputConnection() {
+  var bathLowInput = document.getElementById("bathLowInput");
+  var bathHighInput = document.getElementById("bathHighInput");
+
+  bathSlider.noUiSlider.on('update', function( values, handle ) {
+
+    var value = values[handle];
+
+    if ( handle ) {
+      bathHighInput.value = value;
+    } else {
+      bathLowInput.value = Math.round(value);
+    }
+  });
+
+  bathLowInput.addEventListener('change', function(){
+    bathSlider.noUiSlider.set([this.value, null]);
+  });
+
+  bathHighInput.addEventListener('change', function(){
+    bathSlider.noUiSlider.set([null, Math.round(this.value)]);
+  });
+};
+
+function priceInputConnection() {
+  var priceLowInput = document.getElementById("priceLowInput");
+  var priceHighInput = document.getElementById("priceHighInput");
+
+  priceSlider.noUiSlider.on('update', function( values, handle ) {
+
+    var value = values[handle];
+
+    if ( handle ) {
+      priceHighInput.value = value;
+    } else {
+      priceLowInput.value = Math.round(value);
+    }
+  });
+
+  priceLowInput.addEventListener('change', function(){
+    priceSlider.noUiSlider.set([this.value, null]);
+  });
+
+  priceHighInput.addEventListener('change', function(){
+    priceSlider.noUiSlider.set([null, Math.round(this.value)]);
+  });
+};
+
+function sqftInputConnection() {
+  var sqftLowInput = document.getElementById("sqftLowInput");
+  var sqftHighInput = document.getElementById("sqftHighInput");
+
+  sqftSlider.noUiSlider.on('update', function( values, handle ) {
+
+    var value = values[handle];
+
+    if ( handle ) {
+      sqftHighInput.value = value;
+    } else {
+      sqftLowInput.value = Math.round(value);
+    }
+  });
+
+  sqftLowInput.addEventListener('change', function(){
+    sqftSlider.noUiSlider.set([this.value, null]);
+  });
+
+  sqftHighInput.addEventListener('change', function(){
+    sqftSlider.noUiSlider.set([null, Math.round(this.value)]);
+  });
+};
+
+function yearInputConnection() {
+  var yearLowInput = document.getElementById("yearLowInput");
+  var yearHighInput = document.getElementById("yearHighInput");
+
+  yearSlider.noUiSlider.on('update', function( values, handle ) {
+
+    var value = values[handle];
+
+    if ( handle ) {
+      yearHighInput.value = value;
+    } else {
+      yearLowInput.value = Math.round(value);
+    }
+  });
+
+  yearLowInput.addEventListener('change', function(){
+    yearSlider.noUiSlider.set([this.value, null]);
+  });
+
+  yearHighInput.addEventListener('change', function(){
+    yearSlider.noUiSlider.set([null, Math.round(this.value)]);
+  });
+};
+
+function moneySqftInputConnection() {
+  var moneySqftLowInput = document.getElementById("moneySqftLowInput");
+  var moneySqftHighInput = document.getElementById("moneySqftHighInput");
+
+  moneySqftSlider.noUiSlider.on('update', function( values, handle ) {
+
+    var value = values[handle];
+
+    if ( handle ) {
+      moneySqftHighInput.value = value;
+    } else {
+      moneySqftLowInput.value = Math.round(value);
+    }
+  });
+
+  moneySqftLowInput.addEventListener('change', function(){
+    moneySqftSlider.noUiSlider.set([this.value, null]);
+  });
+
+  moneySqftHighInput.addEventListener('change', function(){
+    moneySqftSlider.noUiSlider.set([null, Math.round(this.value)]);
+  });
+};
+
+function hoaInputConnection() {
+  var hoaLowInput = document.getElementById("hoaLowInput");
+  var hoaHighInput = document.getElementById("hoaHighInput");
+
+  hoaSlider.noUiSlider.on('update', function( values, handle ) {
+
+    var value = values[handle];
+
+    if ( handle ) {
+      hoaHighInput.value = value;
+    } else {
+      hoaLowInput.value = Math.round(value);
+    }
+  });
+
+  hoaLowInput.addEventListener('change', function(){
+    hoaSlider.noUiSlider.set([this.value, null]);
+  });
+
+  hoaHighInput.addEventListener('change', function(){
+    hoaSlider.noUiSlider.set([null, Math.round(this.value)]);
+  });
+};
 
 
 
@@ -309,4 +545,3 @@ document.getElementById("hoaToDouble").addEventListener("click", function(){
 //       .bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
 //       .addTo(myMap);
 //   }
-  
