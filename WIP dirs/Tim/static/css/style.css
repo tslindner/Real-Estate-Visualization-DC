@@ -1,3 +1,6 @@
+html { height: 100% }
+ body { height: 100%; margin: 0px; padding: 0px }
+
 a:hover { 
     text-decoration: none;
     color: black;
@@ -103,6 +106,22 @@ a:hover {
 .bigNavButtons {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+#container {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    right:0;
+    top:0;
+    
+}
+#map {
+    height:100%;
+    width: calc(100% - 500px);
+    position:absolute;
+    right: 0;
+    top:0;
 }
 
 #resetButton {

@@ -12,6 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
     
+    
     <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
@@ -148,12 +149,18 @@
             </div>
         </div>
     </div>
+<div id="map"></div>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo6gDPSuQeLQcoEGrQniNBWhyUgXPZuWQ&callback=initMap" async defer></script>
+   
     <button type="button" onclick="clearFilters()" class="btn-info" id="resetFiltersButton"><h2 class="bigNavButtons">Remove all filters from result list</h2></button>
+    
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="{{ url_for('static', filename='js/lib/nouislider.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/lib/wnumb-1.1.0/wNumb.js') }}"></script>
     <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+    
 
 </body>
 
