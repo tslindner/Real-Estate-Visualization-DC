@@ -110,13 +110,21 @@ var moneySqftSlider = document.getElementById("moneySqftSlider");
 var hoaSlider = document.getElementById("hoaSlider");
 
 
-initFilters(bedSlider,0, 10, -99999999999999999, 99999999999999999)
-initFilters(bathSlider, 0, 10, -99999999999999999, 99999999999999999)
-initFilters(priceSlider, 0, 10000000, -99999999999999999, 99999999999999999)
-initFilters(sqftSlider, 0, 3000, -99999999999999999, 99999999999999999)
-initFilters(yearSlider, 1900, 2018, -99999999999999999, 99999999999999999)
-initFilters(moneySqftSlider, 0, 1000, -99999999999999999, 99999999999999999)
-initFilters(hoaSlider, 0, 1000, -99999999999999999, 99999999999999999)
+// initFilters(bedSlider,0, 10, -99999999999999999, 99999999999999999)
+// initFilters(bathSlider, 0, 10, -99999999999999999, 99999999999999999)
+// initFilters(priceSlider, 0, 10000000, -99999999999999999, 99999999999999999)
+// initFilters(sqftSlider, 0, 3000, -99999999999999999, 99999999999999999)
+// initFilters(yearSlider, 1900, 2018, -99999999999999999, 99999999999999999)
+// initFilters(moneySqftSlider, 0, 1000, -99999999999999999, 99999999999999999)
+// initFilters(hoaSlider, 0, 1000, -99999999999999999, 99999999999999999)
+
+initFilters(bedSlider,0, 10, 0, 10)
+initFilters(bathSlider, 0, 10, 0, 10)
+initFilters(priceSlider, 0, 10000000, 0, 10000000)
+initFilters(sqftSlider, 0, 3000, 0, 3000)
+initFilters(yearSlider, 1900, 2018, 1900, 2018)
+initFilters(moneySqftSlider, 0, 1000, 0, 1000)
+initFilters(hoaSlider, 0, 1000, 0, 1000)
 
 function initFilters(fieldSlider, low, high, min, max) {
   noUiSlider.create(fieldSlider, {
