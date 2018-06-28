@@ -19,9 +19,46 @@
 
 <body>
 
-    <div id="slider">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <div id="bedSlider"></div> <button type="button" id="bedToSingle">Single</button> <button type="button" id="bedToDouble">Double</button>
+        <div id="bathSlider"></div> <button type="button" id="bathToSingle">Single</button> <button type="button" id="bathToDouble">Double</button>
+        <div id="priceSlider"></div> <button type="button" id="priceToSingle">Single</button> <button type="button" id="priceToDouble">Double</button>
+        <div id="sqftSlider"></div> <button type="button" id="sqftToSingle">Single</button> <button type="button" id="sqftToDouble">Double</button>
+        <div id="yearSlider"></div> <button type="button" id="yearToSingle">Single</button> <button type="button" id="yearToDouble">Double</button>
+        <div id="moneySqftSlider"></div> <button type="button" id="moneySqftToSingle">Single</button> <button type="button" id="moneySqftToDouble">Double</button>
+        <div id="hoaSlider"></div> <button type="button" id="hoaToSingle">Single</button> <button type="button" id="hoaToDouble">Double</button>
+
+
+
+
+    
+        <div>
+            <button type="button" id="resetButton">click here to reset!</button>
+        </div>
+    
+        <div>
+            <button type="button" id="filterButton">click here to filter!</button>
+        </div>
+    </div>
+        
+        <!-- Use any element to open the sidenav -->
+    <span onclick="openNav()">open</span>
+        
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <div id="main">
 
     </div>
+    <br>
+    <br>
+
+    <br>
+
+    <br>
+
+
+
 
     <div id="range">
         test <br>
@@ -69,6 +106,7 @@
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="{{ url_for('static', filename='js/lib/nouislider.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lib/wnumb-1.1.0/wNumb.js') }}"></script>
     <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
 
 </body>
