@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WDC Housing</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="span6" style="float: none; margin: 0 auto;">
+            <div class="jumbotron container">
+                <h5 class="display-3">WDC Housing Data</h5>
+                <p class="lead">
+                    Summary Data
+                </p>
+                <hr class="my-4">
+                <p>By: Naser Erwemi | Data Analysis and Visualization Specialist</p>
+                <div class="textwidget">
+                    <div class="row justify-content-center">
+                        <a href="https://www.linkedin.com/in/aerwemi/" target="_blank">
+
+                            <img class='lnk' src="static/img/ln.jpg">
+                        </a>
+
+                        <a href="https://github.com/aerwemi" target="_blank">
+                            <img class='lnk' src="static/img/git.png">
+                        </a>
+
+                        <a href="https://github.com/aerwemi" target="_blank">
+                            <button type="button" class="btn btn-outline-dark">Learn More!</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class=" jumbotron span6" style="float: none; margin: 0 auto;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Select Zip Code:</h4>
+                        <select class="row" id="selDataset"></select>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div id="plot1"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- <script src="/static/js/app.js"></script> -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+
+
+</body>
+
+</html>

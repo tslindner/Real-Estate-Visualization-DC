@@ -1,0 +1,282 @@
+html { height: 100% }
+ body { height: 100%; margin: 0px; padding: 0px }
+
+a:hover { 
+    text-decoration: none;
+    color: black;
+}
+
+.list-group {
+    height: 80vh;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group-header {
+    max-height: 500px;
+    margin-bottom: 10px;
+    overflow:hidden;
+    list-style-type: none;
+    padding-left: 6px;
+}
+
+.list-group-item {
+    padding: 0px;
+    /* height: 28.8px; */
+}
+
+.panel-body {
+    padding: 0px;
+}
+
+.panel-body {
+    padding-left: 6px;
+}
+
+.scroll-list {
+    color:black;
+    font-size:12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    padding:6px;
+    display: block;
+    height: 100%;
+    text-decoration: none;
+}
+
+.scroll-list-header {
+    color: black;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    padding: 0px;
+}
+
+.scroll-list-left {
+    padding-left: 20px;
+}
+
+.bedBath {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.mySliderContainer {
+    height: 10vh;
+    padding: 0px;
+}
+
+.mySliderClass {
+    height: 5vh;
+}
+
+.noUi-horizontal {
+    height: 2vh;
+    width: 20vw;
+}
+
+.input-number {
+	padding: 7px;
+	margin: 15px 5px 5px;
+    width: 8vw;
+    height: 3vh;
+}
+
+.panel-primary {
+    width: 500px;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: rgb(6, 193, 250);
+    color: black;
+}
+
+.btn-info {
+    background-image: none;
+    background-color: rgb(6, 193, 250);
+    color: white;   
+}
+
+.bigNavButtons {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#container {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    right:0;
+    top:0;
+    
+}
+#map {
+    height:100%;
+    width: calc(100% - 500px);
+    position:absolute;
+    right: 0;
+    top:0;
+}
+
+#resetButton {
+    border-radius: 10px;
+    height: 10vh;
+    width: 30vw;
+    margin-bottom: 5px;
+}
+
+#filterButton {
+    border-radius: 10px;
+    height: 10vh;
+    width: 30vw;
+
+}
+
+#resetFiltersButton {
+    border-radius: 10px;
+    height: 7.7vh;
+    width: 500px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#showFiltersButton {
+    border-radius: 10px;
+    display: block;
+}
+
+#hideFiltersButton {
+    border-radius: 10px;
+    display: none;
+}
+
+#bedToSingle{
+    display: null;
+}
+
+#bathToSingle{
+    display: null;
+}
+
+#priceToSingle{
+    display: null;
+}
+
+#sqftToSingle{
+    display: null;
+}
+
+#yearToSingle{
+    display: null;
+}
+
+#moneySqftToSingle{
+    display: null;
+}
+
+#hoaToSingle{
+    display: null;
+}
+
+#bedToDouble{
+    display: none;
+}
+
+#bathToDouble{
+    display: none;
+}
+
+#priceToDouble{
+    display: none;
+}
+
+#sqftToDouble{
+    display: none;
+}
+
+#yearToDouble{
+    display: none;
+}
+
+#moneySqftToDouble{
+    display: none;
+}
+
+#hoaToDouble{
+    display: none;
+}
+
+#result_panel {
+    padding: 0px;
+}
+
+#mySidenav {
+    /* padding-top: 30px; */
+}
+
+/* COPIED FROM W3SCHOOLS */
+
+/* The side navigation menu */
+.sidenav {
+    width: 100%; /* 100% Full-height */
+    height: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1200; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgb(231, 237, 245); /* Black*/
+    overflow: hidden; /* Disable scroll */
+    padding-left: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-top .5s;
+    padding: 0px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+/* NoUi */
+.noUi-connect {
+    color: rgb(6, 193, 250);
+	background: rgb(6, 193, 250);
+    
+}
