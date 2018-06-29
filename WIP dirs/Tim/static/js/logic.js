@@ -46,12 +46,12 @@ function createList (jsonUrl) {
       scrollListRow.append("span")
                     .html(function(d) {
                       return `
-                      <a class="col-md-3 scroll-list" href="/zoom?id=${d["id"]}"> ${d["address"]} </a>
-                      <a class="col-md-2 scroll-list" href="/zoom?id=${d["id"]}"> ${d["location"]} </a> 
-                      <a class="col-md-2 scroll-list" href="/zoom?id=${d["id"]}"> $${d["price"]} </a>
-                      <a class="col-md-1 scroll-list" href="/zoom?id=${d["id"]}"> ${d["beds"]} </a>
-                      <a class="col-md-1 scroll-list" href="/zoom?id=${d["id"]}"> ${d["baths"]} </a>
-                      <a class="col-md-2 scroll-list" href="/zoom?id=${d["id"]}"> ${d["sq_ft"]} Sq. Ft. </a>`
+                      <a class="col-md-3 scroll-list" href="/search?id=${d["id"]}"> ${d["address"]} </a>
+                      <a class="col-md-2 scroll-list" href="/search?id=${d["id"]}"> ${d["location"]} </a> 
+                      <a class="col-md-2 scroll-list" href="/search?id=${d["id"]}"> $${d["price"]} </a>
+                      <a class="col-md-1 scroll-list" href="/search?id=${d["id"]}"> ${d["beds"]} </a>
+                      <a class="col-md-1 scroll-list" href="/search?id=${d["id"]}"> ${d["baths"]} </a>
+                      <a class="col-md-2 scroll-list" href="/search?id=${d["id"]}"> ${d["sq_ft"]} Sq. Ft. </a>`
                     });
 
       /// JUSTIN 2 of 2 
