@@ -1,3 +1,22 @@
+
+// Justin 1 of 2 
+var propTypeChart = dc.rowChart("#propType");
+var zipTypeChart = dc.rowChart("#zipType");
+var visCount = dc.dataCount(".dc-data-count");
+var visTable = dc.dataTable(".dc-data-count");
+
+var chart = dc.scatterPlot("#test");
+
+var myMap = L.map('map');
+var mapMarkers = new L.FeatureGroup();
+
+L.tileLayer(
+"https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
+    "access_token=pk.eyJ1Ijoibm9vZHVseiIsImEiOiJjamljYXRwcXQwMWQ4M3ducjY1ZWR4Y3VhIn0.i8Cgo--hZxWsAvd0PKOU3A"
+).addTo(myMap);
+// Justin 1 of 2  END
+    
+
 function createList (jsonUrl) {
 
   d3.json(`${jsonUrl}`, function(error, response) {
@@ -35,33 +54,218 @@ function createList (jsonUrl) {
                       <a class="col-md-2 scroll-list" href="/zoom?id=${d["id"]}"> ${d["sq_ft"]} Sq. Ft. </a>`
                     });
 
+      /// JUSTIN 2 of 2 
+      var ndx = crossfilter(response);
+      var all = ndx.groupAll();
+
+      var propTypeDim = ndx.dimension(function (d){
+          return d["property_type"];
+      });
+      var zipTypeDim = ndx.dimension(function (d){
+          return d["zip_"];
+      });
+      var idTypeDim = ndx.dimension(function (d){
+          return d["id"];
+      });
+      // scatter
+      var scatterDim = ndx.dimension(function (d){
+          return [d["sq_ft"],d["price"]]
+      });
+      var allDim = ndx.dimension(function(d) {return d;});
+
+      
+      var propTypeGroup = propTypeDim.group();
+      var zipTypeGroup = zipTypeDim.group();
+      var idTypeGroup = idTypeDim.group();
+      // scatter
+      var scatterGroup = scatterDim.group();
+
+
+
+      propTypeChart
+          .width(500)
+          .height(250)
+          .dimension(propTypeDim)
+          .group(propTypeGroup)
+          .elasticX(true);
+          
+
+      zipTypeChart
+          .width(500)
+          .height(250)
+          .dimension(zipTypeDim)
+          .group(zipTypeGroup)
+          .elasticX(true)
+          .data(function (group){
+              return group.top(10)
+          });
+
+      chart
+          .width(500)
+          .height(250)
+          .dimension(scatterDim)
+          .group(scatterGroup)
+          .symbolSize(10)
+          .elasticX(true)
+          .yAxisPadding(500)
+          .xAxisPadding(100)
+          .yAxisLabel(["Price"])
+          .xAxisLabel("Square Feet")
+          .margins({top: 10, right: 20, bottom: 50, left: 80})
+          // .renderlet(function (chart) {
+          //     chart.selectAll("g.x text")
+          //       .attr('dx', '-30')
+          //       .attr('transform', "rotate(-90)");
+          // })
+          // .xAxis([0, 1000, 2000, 3000, 4000, 5000])
+          .x(d3.scale.linear().domain([25, 6508]))
+          .yAxis().ticks(5).tickFormat(function (v) {
+      return "$" + v;});
+          // .y(d3.scale.linear().domain([0, 100]));
+
+      visCount
+          .dimension(ndx)
+          .group(all);
+      
+      visTable   
+          .dimension(idTypeDim)
+          .group(function(d) {
+              return d["id"];
+          })
+          .columns([
+              {
+                  label: "PROPERTY TYPE",
+                  format: function (d){ return d["id"]}
+              },
+              {
+                  label: "PROPERTY TYPE",
+                  format: function (d){ return d["property_type"]}
+              },
+              {
+                  label: "ADDRESS",
+                  format: function (d){ return d["address"]}
+              },
+              {
+                  label: "CITY",
+                  format: function (d){ return d["city"]}
+              },
+              {
+                  label: "STATE",
+                  format: function (d){ return d["state"]}
+              },
+              {
+                  label: "ZIP",
+                  format: function (d){ return d["zip_"]}
+              },
+              {
+                  label: "PRICE",
+                  format: function (d){ return d["price"]}
+              },
+              {
+                  label: "BEDS",
+                  format: function (d){ return d["beds"]}
+              },
+              {
+                  label: "BATHS",
+                  format: function (d){ return d["baths"]}
+              },
+              {
+                  label: "LOCATION",
+                  format: function (d){ return d["location"]}
+              },
+              {
+                  label: "SQUARE FEET",
+                  format: function (d){ return d["sq_ft"]}
+              },
+              {
+                  label: "URL",
+                  format: function (d){ return d["url"]}
+              }
+              ])
+              .on('renderlet', function (table) { // update map with locations to match filtered data
+              table.select('tr.dc-table-group').remove();
+              mapMarkers.clearLayers();
+              _.each(allDim.top(Infinity), function (d) {
+                  var loc = d.location;
+                  var name = d.address;
+                  var marker = L.marker([d.lat, d.lon]);
+                  marker.bindPopup("<p>" + name + " " + " " + "</p>");
+                  mapMarkers.addLayer(marker);
+              });
+              myMap.addLayer(mapMarkers);
+              myMap.fitBounds(mapMarkers.getBounds());
+          });
+          // Justin 2 of 2 END
+              
+
+      dc.renderAll();
+
+
   });
 
 };
+
 
 function getData(filterURLData) {
   console.log(filterURLData);
   if (filterURLData === "reset") {
     clearFilters();
   }
-  else {createList(`/zoom?\
-high_beds=${filterURLData.bed[1]}\
-&low_beds=${filterURLData.bed[0]}\
-&high_price=${filterURLData.price[1]}\
-&low_price=${filterURLData.price[0]}\
-&high_baths=${filterURLData.bath[1]}\
-&low_baths=${filterURLData.bath[0]}\
-&high_sqft=${filterURLData.sqft[1]}\
-&low_sqft=${filterURLData.sqft[0]}\
-&high_year=${filterURLData.year[1]}\
-&low_year=${filterURLData.year[0]}\
-&high_moneySqft=${filterURLData.moneySqft[1]}\
-&low_moneySqft=${filterURLData.moneySqft[0]}`)};
+  else {
+
+    var filterURL = "/search?";
+  
+    if (bedSliderBool == true) {
+      filterURL = filterURL + `high_beds=${filterURLData.bed[1]}&low_beds=${filterURLData.bed[0]}`
+    };
+
+    if (bathSliderBool == true) {
+      filterURL = filterURL + `&high_baths=${filterURLData.bath[1]}&low_baths=${filterURLData.bath[0]}`
+    };
+
+    if (priceSliderBool == true) {
+      filterURL = filterURL + `&high_price=${filterURLData.price[1]}&low_price=${filterURLData.price[0]}`
+    };
+
+    if (sqftSliderBool == true) {
+      filterURL = filterURL + `&high_sqft=${filterURLData.sqft[1]}&low_sqft=${filterURLData.sqft[0]}`
+    };
+
+    if (yearSliderBool == true) {
+      filterURL = filterURL + `&high_year=${filterURLData.year[1]}&low_year=${filterURLData.year[0]}`
+    };
+  
+    if (moneySqftSliderBool == true) {
+      filterURL = filterURL + `&high_moneySqft=${filterURLData.moneySqft[1]}&low_moneySqft=${filterURLData.moneySqft[0]}`
+    };
+
+    if (hoaSliderBool == true) {
+      filterURL = filterURL + `&high_hoa=${filterURLData.hoa[1]}&low_hoa=${filterURLData.hoa[0]}\`)}`
+    };
+
+    console.log(filterURL)
+
+    createList(filterURL);
+    
+//     createList(`/zoom?\
+// high_beds=${filterURLData.bed[1]}\
+// &low_beds=${filterURLData.bed[0]}\
+// &high_price=${filterURLData.price[1]}\
+// &low_price=${filterURLData.price[0]}\
+// &high_baths=${filterURLData.bath[1]}\
+// &low_baths=${filterURLData.bath[0]}\
+// &high_sqft=${filterURLData.sqft[1]}\
+// &low_sqft=${filterURLData.sqft[0]}\
+// &high_year=${filterURLData.year[1]}\
+// &low_year=${filterURLData.year[0]}\
+// &high_moneySqft=${filterURLData.moneySqft[1]}\
+// &low_moneySqft=${filterURLData.moneySqft[0]}`)};
 // &high_hoa=${filterURLData.hoa[1]}\
 // &low_hoa=${filterURLData.hoa[0]}\`)};
   // d3.json(`/zoom?high_beds=${numBeds}&low_beds=${numBeds}`, function(error, data) {
   //     console.log("newdata", data);
   // });
+  };
 };
 
 function clearFilters() {
@@ -97,7 +301,112 @@ function closeNav() {
 }
 
 
+var bedSliderBool = false;
+var bathSliderBool = false;
+var priceSliderBool = false;
+var sqftSliderBool = false;
+var yearSliderBool = false;
+var moneySqftSliderBool = false;
+var hoaSliderBool = false;
 
+
+function activateBed() {
+  document.getElementById("activateBedSlider").style.display = "none";
+  document.getElementById("deactivateBedSlider").style.display = "block";
+  bedSlider.removeAttribute("disabled");
+  bedSliderBool = true;
+};
+
+function deactivateBed() {
+  document.getElementById("activateBedSlider").style.display = "block";
+  document.getElementById("deactivateBedSlider").style.display = "none";
+  bedSlider.setAttribute("disabled", true);
+  bedSliderBool = false;
+};
+
+function activateBath() {
+  document.getElementById("activateBathSlider").style.display = "none";
+  document.getElementById("deactivateBathSlider").style.display = "block";
+  bathSlider.removeAttribute("disabled");
+  bathSliderBool = true;
+};
+
+function deactivateBath() {
+  document.getElementById("activateBathSlider").style.display = "block";
+  document.getElementById("deactivateBathSlider").style.display = "none";
+  bathSlider.setAttribute("disabled", true);
+  bathSliderBool = false;
+};
+
+function activatePrice() {
+  document.getElementById("activatePriceSlider").style.display = "none";
+  document.getElementById("deactivatePriceSlider").style.display = "block";
+  priceSlider.removeAttribute("disabled");
+  priceSliderBool = true;
+};
+
+function deactivatePrice() {
+  document.getElementById("activatePriceSlider").style.display = "block";
+  document.getElementById("deactivatePriceSlider").style.display = "none";
+  priceSlider.setAttribute("disabled", true);
+  priceSliderBool = false;
+};
+
+function activateSqft() {
+  document.getElementById("activateSqftSlider").style.display = "none";
+  document.getElementById("deactivateSqftSlider").style.display = "block";
+  sqftSlider.removeAttribute("disabled");
+  sqftSliderBool = true;
+};
+
+function deactivateSqft() {
+  document.getElementById("activateSqftSlider").style.display = "block";
+  document.getElementById("deactivateSqftSlider").style.display = "none";
+  sqftSlider.setAttribute("disabled", true);
+  sqftSliderBool = false;
+};
+
+function activateYear() {
+  document.getElementById("activateYearSlider").style.display = "none";
+  document.getElementById("deactivateYearSlider").style.display = "block";
+  yearSlider.removeAttribute("disabled");
+  yearSliderBool = true;
+};
+
+function deactivateYear() {
+  document.getElementById("activateYearSlider").style.display = "block";
+  document.getElementById("deactivateYearSlider").style.display = "none";
+  yearSlider.setAttribute("disabled", true);
+  yearSliderBool = false;
+};
+
+function activateMoneySqft() {
+  document.getElementById("activateMoneySqftSlider").style.display = "none";
+  document.getElementById("deactivateMoneySqftSlider").style.display = "block";
+  moneySqftSlider.removeAttribute("disabled");
+  moneySqftSliderBool = true;
+};
+
+function deactivateMoneySqft() {
+  document.getElementById("activateMoneySqftSlider").style.display = "block";
+  document.getElementById("deactivateMoneySqftSlider").style.display = "none";
+  moneySqftSlider.setAttribute("disabled", true);
+  moneySqftBool = false;
+};
+
+function activateHoa() {
+  document.getElementById("activateHoaSlider").style.display = "none";
+  document.getElementById("deactivateHoaSlider").style.display = "block";
+  hoaSlider.removeAttribute("disabled");
+  hoaSliderbool = true;
+};
+
+function deactivateHoa() {
+  document.getElementById("activateHoaSlider").style.display = "block";
+  document.getElementById("deactivateHoaSlider").style.display = "none";
+  hoaSlider.setAttribute("disabled", true);
+  hoaSliderBool = false;
+};
 
 
 var bedSlider = document.getElementById("bedSlider");
@@ -124,6 +433,15 @@ initFilters(sqftSlider, 0, 3000, 0, 3000)
 initFilters(yearSlider, 1900, 2018, 1900, 2018)
 initFilters(moneySqftSlider, 0, 1000, 0, 1000)
 initFilters(hoaSlider, 0, 1000, 0, 1000)
+
+deactivateBed()
+deactivateBath()
+deactivatePrice()
+deactivateSqft()
+deactivateYear()
+deactivateMoneySqft()
+deactivateHoa()
+
 
 function initFilters(fieldSlider, low, high, min, max) {
   noUiSlider.create(fieldSlider, {
@@ -560,3 +878,4 @@ function initMap() {
 //       .bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
 //       .addTo(myMap);
 //   }
+
