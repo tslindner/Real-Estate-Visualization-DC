@@ -142,6 +142,36 @@
             </div>
         </div>
     </div>
+
+    <div id="graphNav" class="sidenav container">
+        <!-- <h1>PROJECT DJFLSAFD</h1> -->
+        <div class="row">
+            <div id="propType" class="col-md-4">
+                <strong>Prop Type</strong>
+                <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                <a class="reset" href="javascript:propTypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div id="zipType" class="col-md-4">
+                <strong>Zip Type</strong>
+                <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                <a class="reset" href="javascript:zipTypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                <div class="clearfix"></div>
+            </div>
+
+            
+            <div id="test" class="col-md-4">
+                <strong>scatter Type</strong>
+                <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                <a class="reset" href="javascript:propTypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div> 
         
         <!-- Use any element to open the sidenav -->
     
@@ -151,8 +181,12 @@
         <div class="panel panel-primary list-area" id="result_panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <button onclick="openNav()" id="showFiltersButton" class="btn">Show filters</button>
-                    <button onclick="closeNav()" id="hideFiltersButton" class="btn">Hide filters</button>
+                    <button type="button" onclick="openNav()" id="showFiltersButton" class="btn">Show filters</button>
+                    <button type="button" onclick="closeNav()" id="hideFiltersButton" class="btn">Hide filters</button>
+                    <button type="button" onclick="openGraphNav()" id="showGraphsButton" class="btn">Show graphs</button>
+                    <button type="button" onclick="closeGraphNav()" id="hideGraphsButton" class="btn">Hide graphs</button>
+                    <button type="button" onclick="clearFilters()" class="btn" id="resetFiltersButton">Remove filters</button>
+
                 </h3>
             </div>
             <div class="panel-body">
@@ -182,34 +216,7 @@
 <!-- <script type="text/javascript"> -->
 <!-- // create the script tag and add to the DOM -->
 <!-- </script>    -->
-    <button type="button" onclick="clearFilters()" class="btn-info" id="resetFiltersButton"><h2 class="bigNavButtons">Remove all filters from result list</h2></button>
-
-    <h1>PROJECT DJFLSAFD</h1>
-
-    <div id="propType">
-        <strong>Prop Type</strong>
-        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-        <a class="reset" href="javascript:propTypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-        <div class="clearfix"></div>
-    </div>
-
-    <div id="zipType">
-        <strong>Zip Type</strong>
-        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-        <a class="reset" href="javascript:zipTypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-        <div class="clearfix"></div>
-    </div>
-
-    
-    <div id="test">
-        <strong>scatter Type</strong>
-        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-        <a class="reset" href="javascript:propTypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-        <div class="clearfix"></div>
-    </div>
+    <!-- <button type="button" onclick="clearFilters()" class="btn-primary" id="resetFiltersButton"><h2 class="bigNavButtons">Remove all filters from result list</h2></button> -->
     
 
     

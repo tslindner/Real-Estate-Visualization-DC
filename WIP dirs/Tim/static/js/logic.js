@@ -282,12 +282,13 @@ document.body.onload = function() {
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
+  closeGraphNav()
   document.getElementById("mySidenav").style.height = "40vh";
   document.getElementById("main").style.marginTop = "40vh";
   var navElement = document.getElementsByClassName("list-group");
-  navElement[0].style.height = "40vh";
+  navElement[0].style.height = "49vh";
   document.getElementById("showFiltersButton").style.display = "none";
-  document.getElementById("hideFiltersButton").style.display = "block";
+  document.getElementById("hideFiltersButton").style.display = "inline-block";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -295,9 +296,30 @@ function closeNav() {
   document.getElementById("mySidenav").style.height = "0";
   document.getElementById("main").style.marginTop = "0";
   var navElement = document.getElementsByClassName("list-group");
-  navElement[0].style.height = "80vh";
-  document.getElementById("showFiltersButton").style.display = "block";
+  navElement[0].style.height = "89vh";
+  document.getElementById("showFiltersButton").style.display = "inline-block";
   document.getElementById("hideFiltersButton").style.display = "none";
+}
+
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openGraphNav() {
+  closeNav()
+  document.getElementById("graphNav").style.height = "40vh";
+  document.getElementById("main").style.marginTop = "40vh";
+  var navElement = document.getElementsByClassName("list-group");
+  navElement[0].style.height = "49vh";
+  document.getElementById("showGraphsButton").style.display = "none";
+  document.getElementById("hideGraphsButton").style.display = "inline-block";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeGraphNav() {
+  document.getElementById("graphNav").style.height = "0";
+  document.getElementById("main").style.marginTop = "0";
+  var navElement = document.getElementsByClassName("list-group");
+  navElement[0].style.height = "89vh";
+  document.getElementById("showGraphsButton").style.display = "inline-block";
+  document.getElementById("hideGraphsButton").style.display = "none";
 }
 
 
