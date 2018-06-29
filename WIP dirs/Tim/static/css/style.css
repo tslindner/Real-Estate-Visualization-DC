@@ -1,5 +1,10 @@
 html { height: 100% }
- body { height: 100%; margin: 0px; padding: 0px }
+body { 
+    height: 100%; 
+    margin: 0px; 
+    padding: 0px; 
+    overflow: hidden;
+}
 
 a:hover { 
     text-decoration: none;
@@ -29,10 +34,6 @@ a:hover {
 
 .panel-body {
     padding: 0px;
-}
-
-.panel-body {
-    padding-left: 6px;
 }
 
 .scroll-list {
@@ -93,7 +94,7 @@ a:hover {
 }
 
 .list-area {
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 .panel > .panel-heading {
@@ -111,6 +112,16 @@ a:hover {
 .bigNavButtons {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+#mini-panel {
+    height: 100vh;
+    width: 10vh;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    display: none;
+    margin: 0px;
 }
 
 #container {
@@ -157,6 +168,20 @@ a:hover {
     background-color: rgba(255, 255, 255, 0.486);
 }
 
+#resetFiltersButton2 {
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+#resetFiltersButton2:hover {
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+#resetFiltersButton2:active {
+    background-color: rgba(255, 255, 255, 0.486);
+}
+
 #showFiltersButton {
     border-radius: 10px;
     display: inline-block;
@@ -172,6 +197,21 @@ a:hover {
     display: none;
 }
 
+#showFiltersButton2 {
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+#showFiltersButton2:hover {
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+#hideFiltersButton2 {
+    border-radius: 10px;
+    display: none;
+}
+
 #showGraphsButton {
     border-radius: 10px;
     display: inline-block;
@@ -183,6 +223,21 @@ a:hover {
 }
 
 #hideGraphsButton {
+    border-radius: 10px;
+    display: none;
+}
+
+#showGraphsButton2 {
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+#showGraphsButton:hover2 {
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+#hideGraphsButton2 {
     border-radius: 10px;
     display: none;
 }
@@ -245,6 +300,9 @@ a:hover {
 
 #result_panel {
     padding: 0px;
+    z-index: 2;
+    left: 0;
+    top: 0;
 }
 
 #mySidenav {

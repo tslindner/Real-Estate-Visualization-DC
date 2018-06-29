@@ -278,7 +278,30 @@ document.body.onload = function() {
 };
 
 
+function openList() {
+  closeNav()
+  closeGraphNav()
+  applyFilters()
 
+  document.getElementById("mini-panel").style.display = "none";
+  document.getElementById("result_panel").style.display = "block";
+
+  document.getElementById("map").style.width = "calc(100% - 498px)";
+
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeList() {
+  closeNav()
+  closeGraphNav()
+  applyFilters()
+
+  document.getElementById("mini-panel").style.display = "block";
+  document.getElementById("result_panel").style.display = "none";
+
+  document.getElementById("map").style.width = "95vw";
+
+}
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
@@ -289,6 +312,11 @@ function openNav() {
   navElement[0].style.height = "49vh";
   document.getElementById("showFiltersButton").style.display = "none";
   document.getElementById("hideFiltersButton").style.display = "inline-block";
+  document.getElementById("showFiltersButton2").style.display = "none";
+  document.getElementById("hideFiltersButton2").style.display = "inline-block";
+
+
+
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -299,6 +327,10 @@ function closeNav() {
   navElement[0].style.height = "89vh";
   document.getElementById("showFiltersButton").style.display = "inline-block";
   document.getElementById("hideFiltersButton").style.display = "none";
+  document.getElementById("showFiltersButton2").style.display = "inline-block";
+  document.getElementById("hideFiltersButton2").style.display = "none";
+
+
 }
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
@@ -310,6 +342,8 @@ function openGraphNav() {
   navElement[0].style.height = "49vh";
   document.getElementById("showGraphsButton").style.display = "none";
   document.getElementById("hideGraphsButton").style.display = "inline-block";
+  document.getElementById("showGraphsButton2").style.display = "none";
+  document.getElementById("hideGraphsButton2").style.display = "inline-block";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -320,6 +354,8 @@ function closeGraphNav() {
   navElement[0].style.height = "89vh";
   document.getElementById("showGraphsButton").style.display = "inline-block";
   document.getElementById("hideGraphsButton").style.display = "none";
+  document.getElementById("showGraphsButton2").style.display = "inline-block";
+  document.getElementById("hideGraphsButton2").style.display = "none";
 }
 
 
@@ -547,7 +583,8 @@ function fillLists(maybeList) {
   };
 };
 
-document.getElementById("filterButton").addEventListener('click', function(){
+function applyFilters() {
+
   var bedFilterList = bedSlider.noUiSlider.get();
   var bathFilterList = bathSlider.noUiSlider.get();
   var priceFilterList = priceSlider.noUiSlider.get();
@@ -575,8 +612,8 @@ document.getElementById("filterButton").addEventListener('click', function(){
 
   };
 
-  getData(filterList)
-});
+  getData(filterList);
+};
 
 
 
