@@ -108,7 +108,7 @@ function createList (jsonUrl) {
           .yAxisLabel(["Price"])
           .xAxisLabel("Square Feet")
           .margins({top: 10, right: 20, bottom: 50, left: 80})
-          // .x(d3.scale.linear().domain([25, 6508]))
+          .x(d3.scale.linear().domain([25, 6508]))
           // .y(d3.scale.linear().domain([0, 7000000]))
           .yAxis().ticks(10).tickFormat(function (v) {
       return "$" + v;});
