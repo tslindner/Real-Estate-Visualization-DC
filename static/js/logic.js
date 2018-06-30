@@ -279,9 +279,6 @@ document.body.onload = function() {
 
 
 function openList() {
-  // closeNav()
-  // closeGraphNav()
-  applyFilters()
 
   document.getElementById("mini-panel").style.display = "none";
   document.getElementById("result_panel").style.display = "block";
@@ -292,9 +289,6 @@ function openList() {
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 function closeList() {
-  // closeNav()
-  // closeGraphNav()
-  applyFilters()
 
   document.getElementById("mini-panel").style.display = "block";
   document.getElementById("result_panel").style.display = "none";
