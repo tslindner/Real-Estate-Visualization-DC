@@ -101,12 +101,12 @@ function createList (jsonUrl) {
           });
 
       chart
-          .width(500)
-          .height(250)
+          .width(550)
+          .height(275)
           .dimension(scatterDim)
           .group(scatterGroup)
           .symbolSize(10)
-          .elasticX(true)
+          // .elasticX(true)
           .yAxisPadding(500)
           .xAxisPadding(100)
           .yAxisLabel(["Price"])
@@ -190,6 +190,7 @@ function createList (jsonUrl) {
                     var marker = L.marker([d.lat, d.lon]);
                     marker.bindPopup("<u/>" +
                     "<li>" + "Sales Price: " + "$" + d.price +  "</li>" +
+                    "<li>" + "Sq Feet " + "$" + d.sq_ft +  "</li>" +
                     "<li>" + "Address: " + addy + ", " + d.city + " " + d.state + "  " + "</li>" +
                     "<li>" + "Neighborhood: " + d.location +  "</li>" +
                     "<li>" + "Property Type: " + d.property_type +  "</li>" +
