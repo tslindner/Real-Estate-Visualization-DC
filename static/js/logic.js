@@ -105,7 +105,7 @@ function createList (jsonUrl) {
           .height(275)
           .dimension(scatterDim)
           .group(scatterGroup)
-          .symbolSize(10)
+          .symbolSize(9)
           // .elasticX(true)
           .yAxisPadding(500)
           .xAxisPadding(100)
@@ -119,7 +119,7 @@ function createList (jsonUrl) {
           // })
           // .xAxis([0, 1000, 2000, 3000, 4000, 5000])
           .x(d3.scale.linear().domain([25, 6508]))
-          .yAxis().ticks(5).tickFormat(function (v) {
+          .yAxis().ticks(10).tickFormat(function (v) {
       return "$" + v;});
           // .y(d3.scale.linear().domain([0, 100]));
 
