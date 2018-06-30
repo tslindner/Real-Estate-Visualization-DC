@@ -279,8 +279,8 @@ document.body.onload = function() {
 
 
 function openList() {
-  closeNav()
-  closeGraphNav()
+  // closeNav()
+  // closeGraphNav()
   applyFilters()
 
   document.getElementById("mini-panel").style.display = "none";
@@ -292,14 +292,14 @@ function openList() {
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 function closeList() {
-  closeNav()
-  closeGraphNav()
+  // closeNav()
+  // closeGraphNav()
   applyFilters()
 
   document.getElementById("mini-panel").style.display = "block";
   document.getElementById("result_panel").style.display = "none";
 
-  document.getElementById("map").style.width = "95vw";
+  document.getElementById("map").style.width = "calc(100vw - 80px)";
 
 }
 
@@ -310,6 +310,17 @@ function openNav() {
   document.getElementById("main").style.marginTop = "40vh";
   var navElement = document.getElementsByClassName("list-group");
   navElement[0].style.height = "49vh";
+
+  document.getElementById("mini-panel").style.height = "60vh";
+
+  var navElement2 = document.getElementsByClassName("mini-panel-btn");
+  navElement2[0].style.height = "15vh";
+  navElement2[1].style.height = "15vh";
+  navElement2[2].style.height = "15vh";
+  navElement2[3].style.height = "15vh";
+  navElement2[4].style.height = "15vh";
+  navElement2[5].style.height = "15vh";
+
   document.getElementById("showFiltersButton").style.display = "none";
   document.getElementById("hideFiltersButton").style.display = "inline-block";
   document.getElementById("showFiltersButton2").style.display = "none";
@@ -325,6 +336,17 @@ function closeNav() {
   document.getElementById("main").style.marginTop = "0";
   var navElement = document.getElementsByClassName("list-group");
   navElement[0].style.height = "89vh";
+
+  document.getElementById("mini-panel").style.height = "100vh";
+
+  var navElement2 = document.getElementsByClassName("mini-panel-btn");
+  navElement2[0].style.height = "25vh";
+  navElement2[1].style.height = "25vh";
+  navElement2[2].style.height = "25vh";
+  navElement2[3].style.height = "25vh";
+  navElement2[4].style.height = "25vh";
+  navElement2[5].style.height = "25vh";
+
   document.getElementById("showFiltersButton").style.display = "inline-block";
   document.getElementById("hideFiltersButton").style.display = "none";
   document.getElementById("showFiltersButton2").style.display = "inline-block";
@@ -338,8 +360,20 @@ function openGraphNav() {
   closeNav()
   document.getElementById("graphNav").style.height = "40vh";
   document.getElementById("main").style.marginTop = "40vh";
+
   var navElement = document.getElementsByClassName("list-group");
   navElement[0].style.height = "49vh";
+
+  document.getElementById("mini-panel").style.height = "60vh";
+
+  var navElement2 = document.getElementsByClassName("mini-panel-btn");
+  navElement2[0].style.height = "15vh";
+  navElement2[1].style.height = "15vh";
+  navElement2[2].style.height = "15vh";
+  navElement2[3].style.height = "15vh";
+  navElement2[4].style.height = "15vh";
+  navElement2[5].style.height = "15vh";
+
   document.getElementById("showGraphsButton").style.display = "none";
   document.getElementById("hideGraphsButton").style.display = "inline-block";
   document.getElementById("showGraphsButton2").style.display = "none";
@@ -352,6 +386,17 @@ function closeGraphNav() {
   document.getElementById("main").style.marginTop = "0";
   var navElement = document.getElementsByClassName("list-group");
   navElement[0].style.height = "89vh";
+
+  document.getElementById("mini-panel").style.height = "100vh";
+
+  var navElement2 = document.getElementsByClassName("mini-panel-btn");
+  navElement2[0].style.height = "25vh";
+  navElement2[1].style.height = "25vh";
+  navElement2[2].style.height = "25vh";
+  navElement2[3].style.height = "25vh";
+  navElement2[4].style.height = "25vh";
+  navElement2[5].style.height = "25vh";
+
   document.getElementById("showGraphsButton").style.display = "inline-block";
   document.getElementById("hideGraphsButton").style.display = "none";
   document.getElementById("showGraphsButton2").style.display = "inline-block";

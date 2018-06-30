@@ -114,14 +114,21 @@ a:hover {
     margin-bottom: 0px;
 }
 
+.mini-panel-btn {
+    height: 25vh;
+    width: 80px;
+    transition: 0.5s;
+}
+
 #mini-panel {
     height: 100vh;
-    width: 10vh;
+    width: 80px;
     z-index: 1;
     left: 0;
     top: 0;
     display: none;
     margin: 0px;
+    transition: 0.5s;
 }
 
 #container {
@@ -154,6 +161,20 @@ a:hover {
 
 }
 
+#hideListButton {
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+#hideListButton:hover {
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+#hideListButton:active {
+    background-color: rgba(255, 255, 255, 0.486);
+}
+
 #resetFiltersButton {
     border-radius: 10px;
     display: inline-block;
@@ -169,17 +190,17 @@ a:hover {
 }
 
 #resetFiltersButton2 {
-    border-radius: 10px;
+    border-radius: 0px;
     display: inline-block;
-    background-color: white;
+    /* background-color: white; */
 }
 
 #resetFiltersButton2:hover {
-    background-color: rgba(255, 255, 255, 0.856);
+    color: rgba(255, 255, 255, 0.671);
 }
 
 #resetFiltersButton2:active {
-    background-color: rgba(255, 255, 255, 0.486);
+    /* background-color: rgba(255, 255, 255, 0.486); */
 }
 
 #showFiltersButton {
@@ -198,18 +219,23 @@ a:hover {
 }
 
 #showFiltersButton2 {
-    border-radius: 10px;
+    border-radius: 0px;
     display: inline-block;
-    background-color: white;
+    /* background-color: white; */
 }
 
 #showFiltersButton2:hover {
-    background-color: rgba(255, 255, 255, 0.856);
+    color: rgba(255, 255, 255, 0.671);
 }
 
 #hideFiltersButton2 {
-    border-radius: 10px;
+    border-radius: 0px;
     display: none;
+    background-color: rgb(17, 50, 141);
+}
+
+#hideFiltersButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
 }
 
 #showGraphsButton {
@@ -228,18 +254,31 @@ a:hover {
 }
 
 #showGraphsButton2 {
-    border-radius: 10px;
+    border-radius: 0px;
     display: inline-block;
-    background-color: white;
+    /* background-color: white; */
 }
 
-#showGraphsButton:hover2 {
-    background-color: rgba(255, 255, 255, 0.856);
+#showGraphsButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
 }
 
 #hideGraphsButton2 {
-    border-radius: 10px;
+    border-radius: 0px;
     display: none;
+    background-color: rgb(17, 50, 141);
+}
+
+#hideGraphsButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
+}
+
+#showListButton2 {
+    border-radius: 0px;
+}
+
+#showListButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
 }
 
 #bedToSingle {

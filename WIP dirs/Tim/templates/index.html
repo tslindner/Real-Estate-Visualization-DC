@@ -178,13 +178,13 @@
         
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     <div id="main">
-        <div class="panel-primary panel" id="mini-panel">
-            <button type="button" onclick="openNav()" id="showFiltersButton2" class="btn">filters</button>
-            <button type="button" onclick="closeNav()" id="hideFiltersButton2" class="btn">filters</button>
-            <button type="button" onclick="openGraphNav()" id="showGraphsButton2" class="btn">graphs</button>
-            <button type="button" onclick="closeGraphNav()" id="hideGraphsButton2" class="btn">graphs</button>
-            <button type="button" onclick="clearFilters()" id="resetFiltersButton2" class="btn">filters</button>
-            <button type="button" onclick="openList()" id="showListButton" class="btn">list</button>
+        <div id="mini-panel">
+            <button type="button" onclick="openNav()" id="showFiltersButton2" class="btn bg-primary mini-panel-btn">Show <br> filters</button>
+            <button type="button" onclick="closeNav()" id="hideFiltersButton2" class="btn bg-primary mini-panel-btn">Hide <br> filters</button>
+            <button type="button" onclick="openGraphNav()" id="showGraphsButton2" class="btn bg-primary mini-panel-btn">Show <br> graphs</button>
+            <button type="button" onclick="closeGraphNav()" id="hideGraphsButton2" class="btn bg-primary mini-panel-btn">Hide <br> graphs</button>
+            <button type="button" onclick="clearFilters()" id="resetFiltersButton2" class="btn bg-primary mini-panel-btn">Remove <br> filters</button>
+            <button type="button" onclick="openList()" id="showListButton2" class="btn bg-primary mini-panel-btn">Show <br> list</button>
         </div>
 
         <div class="panel panel-primary list-area" id="result_panel">
