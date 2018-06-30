@@ -1,5 +1,10 @@
 html { height: 100% }
- body { height: 100%; margin: 0px; padding: 0px }
+body { 
+    height: 100%; 
+    margin: 0px; 
+    padding: 0px; 
+    overflow: hidden;
+}
 
 a:hover { 
     text-decoration: none;
@@ -7,9 +12,10 @@ a:hover {
 }
 
 .list-group {
-    height: 80vh;
-    margin-bottom: 10px;
-    overflow:scroll;
+    height: 89vh;
+    margin-bottom: 0px;
+    overflow-y:scroll;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -28,10 +34,6 @@ a:hover {
 
 .panel-body {
     padding: 0px;
-}
-
-.panel-body {
-    padding-left: 6px;
 }
 
 .scroll-list {
@@ -91,21 +93,42 @@ a:hover {
     width: 500px;
 }
 
+.list-area {
+    margin: 0px;
+}
+
 .panel > .panel-heading {
     background-image: none;
-    background-color: rgb(6, 193, 250);
+    /* background-color: rgb(6, 193, 250); */
     color: black;
 }
 
 .btn-info {
     background-image: none;
-    background-color: rgb(6, 193, 250);
+    /* background-color: rgb(6, 193, 250); */
     color: white;   
 }
 
 .bigNavButtons {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+.mini-panel-btn {
+    height: 25vh;
+    width: 80px;
+    transition: 0.5s;
+}
+
+#mini-panel {
+    height: 100vh;
+    width: 80px;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    display: none;
+    margin: 0px;
+    transition: 0.5s;
 }
 
 #container {
@@ -118,7 +141,7 @@ a:hover {
 }
 #map {
     height:100%;
-    width: calc(100% - 500px);
+    width: calc(100% - 498px);
     position:absolute;
     right: 0;
     top:0;
@@ -138,18 +161,56 @@ a:hover {
 
 }
 
+#hideListButton {
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+#hideListButton:hover {
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+#hideListButton:active {
+    background-color: rgba(255, 255, 255, 0.486);
+}
+
 #resetFiltersButton {
     border-radius: 10px;
-    height: 7.7vh;
-    width: 500px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    display: inline-block;
+    background-color: white;
+}
+
+#resetFiltersButton:hover {
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+#resetFiltersButton:active {
+    background-color: rgba(255, 255, 255, 0.486);
+}
+
+#resetFiltersButton2 {
+    border-radius: 0px;
+    display: inline-block;
+    /* background-color: white; */
+}
+
+#resetFiltersButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
+}
+
+#resetFiltersButton2:active {
+    /* background-color: rgba(255, 255, 255, 0.486); */
 }
 
 #showFiltersButton {
     border-radius: 10px;
-    display: block;
+    display: inline-block;
+    background-color: white;
+}
+
+#showFiltersButton:hover {
+    background-color: rgba(255, 255, 255, 0.856);
 }
 
 #hideFiltersButton {
@@ -157,7 +218,70 @@ a:hover {
     display: none;
 }
 
-#bedToSingle{
+#showFiltersButton2 {
+    border-radius: 0px;
+    display: inline-block;
+    /* background-color: white; */
+}
+
+#showFiltersButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
+}
+
+#hideFiltersButton2 {
+    border-radius: 0px;
+    display: none;
+    background-color: rgb(17, 50, 141);
+}
+
+#hideFiltersButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
+}
+
+#showGraphsButton {
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+#showGraphsButton:hover {
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+#hideGraphsButton {
+    border-radius: 10px;
+    display: none;
+}
+
+#showGraphsButton2 {
+    border-radius: 0px;
+    display: inline-block;
+    /* background-color: white; */
+}
+
+#showGraphsButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
+}
+
+#hideGraphsButton2 {
+    border-radius: 0px;
+    display: none;
+    background-color: rgb(17, 50, 141);
+}
+
+#hideGraphsButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
+}
+
+#showListButton2 {
+    border-radius: 0px;
+}
+
+#showListButton2:hover {
+    color: rgba(255, 255, 255, 0.671);
+}
+
+#bedToSingle {
     display: null;
 }
 
@@ -215,6 +339,9 @@ a:hover {
 
 #result_panel {
     padding: 0px;
+    z-index: 2;
+    left: 0;
+    top: 0;
 }
 
 #mySidenav {
@@ -239,31 +366,41 @@ a:hover {
 
 /* The navigation menu links */
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    /* padding: 8px 8px 8px 32px; */
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #818181a6;
     display: block;
     transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
+.sidenav .deactbtn:hover {
+    color: red;
+}
+
+.sidenav .actbtn:hover {
+    color: green;
 }
 
 /* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
+.sidenav .deactbtn {
     font-size: 36px;
-    margin-left: 50px;
+    padding: 0px;
+    max-height: 5vh;
+    top: 100px;
+}
+
+.sidenav .actbtn {
+    font-size: 36px;
+    padding: 0px;
+    max-height: 5vh;
+    top: 100px;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-    transition: margin-top .5s;
+    transition: margin-top 0.5s;
     padding: 0px;
 }
 

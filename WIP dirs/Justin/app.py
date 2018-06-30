@@ -175,7 +175,7 @@ def data():
 
     return redirect("..")
 
-@app.route("/zoom", methods=["GET", "POST"])
+@app.route("/search", methods=["GET", "POST"])
 def zoom():
     latitude = request.args.get("lat") 
     longitude = request.args.get("lon")
