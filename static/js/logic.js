@@ -190,7 +190,7 @@ function createList (jsonUrl) {
                     var marker = L.marker([d.lat, d.lon]);
                     marker.bindPopup("<u/>" +
                     "<li>" + "Sales Price: " + "$" + d.price +  "</li>" +
-                    "<li>" + "Sq Feet " + "$" + d.sq_ft +  "</li>" +
+                    "<li>" + "Sq Feet: " + d.sq_ft +  "</li>" +
                     "<li>" + "Address: " + addy + ", " + d.city + " " + d.state + "  " + "</li>" +
                     "<li>" + "Neighborhood: " + d.location +  "</li>" +
                     "<li>" + "Property Type: " + d.property_type +  "</li>" +
