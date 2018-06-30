@@ -183,18 +183,25 @@ function createList (jsonUrl) {
               }
               ])
               .on('renderlet', function (table) { // update map with locations to match filtered data
-              table.select('tr.dc-table-group').remove();
-              mapMarkers.clearLayers();
-              _.each(allDim.top(Infinity), function (d) {
-                  var loc = d.location;
-                  var name = d.address;
-                  var marker = L.marker([d.lat, d.lon]);
-                  marker.bindPopup("<p>" + name + " " + " " + "</p>");
-                  mapMarkers.addLayer(marker);
-              });
-              myMap.addLayer(mapMarkers);
-              myMap.fitBounds(mapMarkers.getBounds());
-          });
+                table.select('tr.dc-table-group').remove();
+                mapMarkers.clearLayers();
+                _.each(allDim.top(Infinity), function (d) {
+                    var addy = d.address;
+                    var marker = L.marker([d.lat, d.lon]);
+                    marker.bindPopup("<u/>" +
+                    "<li>" + "Sales Price: " + "$" + d.price +  "</li>" +
+                    "<li>" + "Address: " + addy + ", " + d.city + " " + d.state + "  " + "</li>" +
+                    "<li>" + "Neighborhood: " + d.location +  "</li>" +
+                    "<li>" + "Property Type: " + d.property_type +  "</li>" +
+                    "<li>" + "Days on Market: " + d.days_on_market +  "</li>" +
+                    "<li>" + "Year Built: " + d.year_built +  "</li>" +
+                    "<li>" + "<a href=" + d.url + ">Visit Redfin Listing for more information!" + "</a>" + "</li>" 
+                  );
+                    mapMarkers.addLayer(marker);
+                });
+                myMap.addLayer(mapMarkers);
+                myMap.fitBounds(mapMarkers.getBounds());
+            });
           // Justin 2 of 2 END
               
 
